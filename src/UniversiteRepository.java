@@ -28,11 +28,9 @@ public class UniversiteRepository implements InterfUniversiteRep {
 		ij.outPut_Msg("LogBD : université récupérée");
 		connect.close();
 		return u;	
-
-
+	
+		
 	}
-
-
 	@Override
 	public int NbrLivreAutoriser(int universityId) throws SQLException, IOException {
 		// TODO Auto-generated method stub
@@ -40,14 +38,20 @@ public class UniversiteRepository implements InterfUniversiteRep {
 		if (univ.getPack() == TypePackage.Standard)
 	     {
 	          return 10;
+			Package pack = new Standard(null);
+			return pack.getNbrLivreAutorise();
 	     }
 	     else if (univ.getPack() == TypePackage.Premium)
 	     {
 	    	 return 20;
+	    	 Package pack = new Premium(null);
+	    	 return pack.getNbrLivreAutorise();
 	     }     
 		return 0;
 	}
 
+
+	
 	@Override
 	public int GetNbrBonus(int universityId) throws SQLException, IOException {
 		// TODO Auto-generated method stub
@@ -55,13 +59,18 @@ public class UniversiteRepository implements InterfUniversiteRep {
 		if (univ.getPack() == TypePackage.Standard)
 	     {
 	          return 5;
+			Package pack = new Standard(null);
+		    return pack.getNbrLivreBonus();
 	     }
 	     else if (univ.getPack() == TypePackage.Premium)
 	     {
 	    	 return 10;
+	    	 Package pack = new Premium(null);
+	    	 return pack.getNbrLivreBonus();
 	     }     
 		return 0;
 	}
-
+	
+	
 	
 }
