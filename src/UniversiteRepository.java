@@ -48,7 +48,20 @@ public class UniversiteRepository implements InterfUniversiteRep {
 		return 0;
 	}
 
-
+	@Override
+	public int GetNbrBonus(int universityId) throws SQLException, IOException {
+		// TODO Auto-generated method stub
+		Universite univ=this.GetById(universityId);
+		if (univ.getPack() == TypePackage.Standard)
+	     {
+	          return 5;
+	     }
+	     else if (univ.getPack() == TypePackage.Premium)
+	     {
+	    	 return 10;
+	     }     
+		return 0;
+	}
 
 	
 }
