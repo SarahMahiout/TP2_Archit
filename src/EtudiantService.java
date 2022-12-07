@@ -1,4 +1,5 @@
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -50,20 +51,16 @@ public class EtudiantService {
 	
 	
 	
-
 public ArrayList<Etudiant> GetEtudiantParUniversitye()
 {
     //...
 	return new ArrayList<>(4);
 }
-
 public ArrayList<Etudiant> GetEtudiatparLivreEmprunte()
 {
     //...
 	return new ArrayList<>(4);
 	
 }
-
-
 	
 }
