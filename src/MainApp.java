@@ -18,6 +18,7 @@ public class MainApp {
 		InterfEtudiant etud = new Etudiant(10, "Guendouziiiii", "wassila", "azds@gmail.com","xxxx", 1);
 		InterfEtudiant etud = new Etudiant(3, "guens", "wassila", "a@gmail.com","xxxx", 3);
 		serv.inscription(etud);
+		serv.AjoutBonus();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

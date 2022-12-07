@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,12 +17,13 @@ public class EtudiantService {
 		this.UnivRep=UnivRep;
 		this.ij=ij;
 		
+
 	}
 	
 	boolean inscription (InterfEtudiant etud) throws SQLException, IOException	
 	{
-	    ij.outPut_Msg("Log: début de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());	    
-	    // La verification de la validité de l'email et matricule se fait à la classe EtudiantRepository
+	    ij.outPut_Msg("Log: dï¿½but de l'opï¿½ration d'ajout de l'ï¿½tudiant avec matricule "+etud.getMatricule());	    
+	    // La verification de la validitï¿½ de l'email et matricule se fait ï¿½ la classe EtudiantRepository
 	    if(StudRep.CheckEmailMatricule(etud))
 	    	{
 	    	return false;
@@ -29,35 +31,43 @@ public class EtudiantService {
 	    //le nombre de livres autoriser est calculer danns la classe UniversiteRepository sans ajouter les conditions dans cette classe 
 		int nbrLivre=UnivRep.NbrLivreAutoriser(etud.getId_universite());
 		etud.setNbLivreMensuel_Autorise(nbrLivre);
-		AjoutBonus(etud);
 		StudRep.add(etud);
-		//System.out.println("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
-		ij.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
-     
-
+		//System.out.println("Log: Fin de l'opï¿½ration d'ajout de l'ï¿½tudiant avec matricule "+etud.getMatricule());
+		ij.outPut_Msg("Log: Fin de l'opï¿½ration d'ajout de l'ï¿½tudiant avec matricule "+etud.getMatricule());
+		 
+		return true;
+	    
+		
 	}
-
-	public void AjoutBonus(InterfEtudiant etud) throws SQLException, IOException {
-		  
-		etud.AddBonnus(UnivRep.GetNbrBonus(etud.getId_universite()));
-
-
-
+	
+	public void AjoutBonus() throws SQLException, IOException {
+		// AjouterNbrBonus retourne le nombre livres bonus  
+		
+/*  Mise a jour de la fontion AjoutBonus pour quel ajouter le bonus pour tout les etudiant qui sont obtenus par la fonction "GetEtudiantParUniversitye() considï¿½rer comme prï¿½dï¿½fini". */
+		ArrayList<Etudiant> array= GetEtudiantParUniversitye();
+		for( Etudiant et: array) {
+			et.AddBonnus(UnivRep.GetNbrBonus(et.getId_universite()));
+		}
+		
 	}
-
-
-
+	
+	
+	
 
 public ArrayList<Etudiant> GetEtudiantParUniversitye()
 {
     //...
+	
 	return new ArrayList<>(4);
 }
+
 public ArrayList<Etudiant> GetEtudiatparLivreEmprunte()
 {
     //...
 	return new ArrayList<>(4);
 	
 }
+
+
 	
 }

@@ -1,41 +1,38 @@
-
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Observer;
-
 import javax.swing.JButton;
 
 public abstract class AbstractViewInscription extends Observable {
 
-
+	
 	ArrayList<ActionListener> observable = new ArrayList<ActionListener>();
-
+	
 	public void addObserver(ActionListener actionListner) {
 
 		if(!observable.contains(actionListner)){
 			observable.add(actionListner);
 			 }
-
+		
 	}
 
-
+	
 	public void deleteObserver(ActionListener actionListner) {
 		int num = observable.indexOf(actionListner);
 		observable.remove(num);
-
-
+		
+		
 	}
 
-
+	
 	public void notifyObservers(JButton b) {
-
+		
 		for(ActionListener x : observable) {
 			b.addActionListener(x);
 
 		}
 	}
-
+	
 	public abstract void addListnerButton();
 
 
@@ -75,12 +72,11 @@ public abstract class AbstractViewInscription extends Observable {
 	public abstract JButton getAnnuler();
 }
 
+	
+	
+	
 
-
-
-
-
-
+	
 
 
 
