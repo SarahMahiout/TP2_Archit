@@ -9,19 +9,14 @@ public class MainApp {
 			jcomp.ajouter(j1);
 			jcomp.ajouter(j2);
 			jcomp.ajouter(j3);
-
+			
 		InterfaceDBConnection db=DBConnection.getInstance();
-		InterfUniversiteRep UnivRep=new UniversiteRepository(db);
-		InterfEtudiantRep StudRep=new EtudiantRepository(db);
-		InterfEtudiant etud = new Etudiant(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx", 1);
-		EtudiantService serv=new EtudiantService(StudRep,UnivRep);
-
-			serv.inscription(etud);
-
+		
 		InterfUniversiteRep UnivRep=new UniversiteRepository(db,jcomp);
 		InterfEtudiantRep StudRep=new EtudiantRepository(db,jcomp);
 		EtudiantService serv=new EtudiantService(StudRep,UnivRep,jcomp);
 		InterfEtudiant etud = new Etudiant(50, "Guendouziiiii", "wassila", "azds@gmail.com","xxxx", 1);
+		InterfEtudiant etud = new Etudiant(10, "Guendouziiiii", "wassila", "azds@gmail.com","xxxx", 1);
 		serv.inscription(etud);
 
 		} catch (Exception e) {
